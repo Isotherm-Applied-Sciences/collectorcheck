@@ -1,0 +1,16 @@
+{
+  "version": "2.10.0",
+  "archived": true,
+  "archive_type": "repository-reference-index",
+  "artifacts": {
+    "seal": "../../seal/v2.10/SEAL.txt",
+    "signature": "../../seal/v2.10/signature/signature.sha256",
+    "certificate": "../../seal/v2.10/certificate.json",
+    "ledger_entry": "../../ledger/v2.10/entry.json",
+    "ledger_anchor": "../../ledger/anchor/v2.10/anchor.sha256",
+    "forward_anchor": "../../ledger/continuity/v2.10/forward-anchor.sha256",
+    "lineage_seal": "../../lineage/v2.10/lineage-seal.sha256",
+    "lineage_lock": "../../lineage/v2.10/lock/lineage-lock.sha256"
+  },
+  "timestamp": "2026-10-13T20:26:04.3645645Z"
+}
