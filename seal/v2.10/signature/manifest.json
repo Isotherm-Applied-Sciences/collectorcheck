@@ -1,0 +1,9 @@
+{
+  "version": "2.10.0",
+  "algorithm": "SHA-256",
+  "signature_type": "content-integrity-digest",
+  "signature_file": "signature.sha256",
+  "sealed_artifact": "../SEAL.txt",
+  "authenticates_signer": false,
+  "verified": true
+}
