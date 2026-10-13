@@ -9,7 +9,7 @@ It provides a command-line interface, a versioned JavaScript API, structured log
 - Node.js 22.12 or newer
 - Git
 
-This repository currently has no `package.json` or third-party runtime dependencies, so `npm install` is not required.
+The package has no third-party runtime dependencies. Run `npm test` to execute the API contract and documentation test suites.
 
 ## Installation
 

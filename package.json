@@ -1,0 +1,29 @@
+{
+  "name": "collectorcheck",
+  "version": "1.0.0",
+  "description": "Deterministic ingestion, metadata extraction, and cloud-processing engine for receipts.",
+  "type": "module",
+  "bin": {
+    "collectorcheck": "bin/collectorcheck-cli.mjs"
+  },
+  "exports": {
+    "./api": "./src/api/index.js",
+    "./api/v1": "./src/api/v1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Isotherm-Applied-Sciences/collectorcheck.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --input-type=module -e \"import { runApiContractTests } from './src/api/tests/contract-tests.js'; import { runApiDocsTests } from './src/api/tests/docs-tests.js'; console.log(await runApiContractTests()); console.log(runApiDocsTests());\""
+  }
+}
