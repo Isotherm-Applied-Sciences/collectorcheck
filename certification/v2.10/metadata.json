@@ -1,0 +1,11 @@
+{
+  "subsystem": "Metadata",
+  "version": "2.10.0",
+  "certified": true,
+  "criteria": [
+    "field normalization",
+    "value stability",
+    "cross-field consistency",
+    "adversarial mismatch detection"
+  ]
+}

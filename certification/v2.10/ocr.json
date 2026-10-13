@@ -1,0 +1,11 @@
+{
+  "subsystem": "OCR",
+  "version": "2.10.0",
+  "certified": true,
+  "criteria": [
+    "deterministic block ordering",
+    "confidence normalization",
+    "multi-block merging",
+    "malformed OCR tolerance"
+  ]
+}

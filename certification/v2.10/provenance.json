@@ -1,0 +1,11 @@
+{
+  "subsystem": "Provenance",
+  "version": "2.10.0",
+  "certified": true,
+  "criteria": [
+    "chain stability",
+    "envelope stability",
+    "tamper detection",
+    "cross-envelope consistency"
+  ]
+}
