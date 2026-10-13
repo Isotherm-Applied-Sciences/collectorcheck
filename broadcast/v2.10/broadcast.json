@@ -1,0 +1,9 @@
+{
+  "version": "2.10.0",
+  "broadcasted": true,
+  "broadcast_scope": "repository-global-anchor-map",
+  "lineage_seal": "../../lineage/v2.10/lineage-seal.sha256",
+  "forward_anchor": "../../ledger/continuity/v2.10/forward-anchor.sha256",
+  "root_anchor": "../../ledger/anchor/v2.10/anchor.sha256",
+  "timestamp": "2026-10-13T20:14:34.5341495Z"
+}
