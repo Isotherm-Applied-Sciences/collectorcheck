@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { stableExtract } from '../../../src/v2/ocr/robustness/extraction-stability.js';
 import { runConfidenceStabilityTests } from './confidence-stability.test.js';
+import { runMultiblockStabilityTests } from './multiblock-stability.test.js';
 
 export async function runExtractionStabilityTests() {
   const malformed = stableExtract(null);
@@ -33,6 +34,7 @@ export async function runExtractionStabilityTests() {
   assert.deepEqual(repeatA, repeatB);
 
   const confidenceTests = await runConfidenceStabilityTests();
+  const multiblockTests = await runMultiblockStabilityTests();
 
   return {
     ok: true,
@@ -42,7 +44,8 @@ export async function runExtractionStabilityTests() {
       'Confidence clamp',
       'Circular input warning',
       'Deterministic output',
-      ...confidenceTests.tests
+      ...confidenceTests.tests,
+      ...multiblockTests.tests
     ]
   };
 }
