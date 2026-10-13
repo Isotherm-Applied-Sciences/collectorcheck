@@ -1,0 +1,18 @@
+{
+  "version": "2.10.0",
+  "lineage_locked": true,
+  "lock_scope": "content-integrity-snapshot",
+  "lock_file": "lineage-lock.sha256",
+  "sealed_artifact": "../../../seal/v2.10/SEAL.txt",
+  "lineage_seal": "../../../lineage/v2.10/lineage-seal.sha256",
+  "forward_anchor": "../../../ledger/continuity/v2.10/forward-anchor.sha256",
+  "root_anchor": "../../../ledger/anchor/v2.10/anchor.sha256",
+  "locked_at": "2026-10-13T20:16:56.4083156Z",
+  "immutability_rules": {
+    "retroactive_modification": "detectable_not_prevented",
+    "lineage_chain": "append-only",
+    "tamper_evident": true,
+    "lock_integrity": "sha256_hash_linked",
+    "immutability_enforced": false
+  }
+}
