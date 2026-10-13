@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { cloudResult } from '../contract.js';
 
 const REMOTE_ROOT = process.env.COLLECTORCHECK_REMOTE_ROOT ||
   path.join(process.cwd(), 'collectorcheck-remote-sim');
@@ -17,9 +18,5 @@ export async function uploadJson(relativePath, data) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(full, JSON.stringify(data, null, 2), 'utf8');
 
-  return {
-    target: 'remote-sim',
-    path: full,
-    ok: true
-  };
+  return cloudResult('remote-sim', full, true);
 }

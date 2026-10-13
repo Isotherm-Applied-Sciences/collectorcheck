@@ -1,6 +1,6 @@
 import { snapshot } from './ingestion/watcher/index.js';
 import { extractMetadata } from './metadata/pipeline/index.js';
-import { local, remote, makeStorageKey } from './cloud/index.js';
+import { local, remote, makeStorageKey, contract } from './cloud/index.js';
 import { logInfo, logError } from './logging/index.js';
 import { err } from './errors/index.js';
 
@@ -19,6 +19,15 @@ export async function processAll() {
       const key = makeStorageKey(file) + '.json';
       const savedLocal = local.saveJson(key, meta);
       const savedRemote = await remote.uploadJson(key, meta);
+
+      if (!contract.validateCloudResult(savedLocal)) {
+        throw err('CLOUD_LOCAL_INVALID', 'Local cloud result invalid', { file, savedLocal });
+      }
+
+      if (!contract.validateCloudResult(savedRemote)) {
+        throw err('CLOUD_REMOTE_INVALID', 'Remote cloud result invalid', { file, savedRemote });
+      }
+
       results.push({ file, local: savedLocal, remote: savedRemote });
       logInfo('engine.process.success', { file, local: savedLocal, remote: savedRemote });
     } catch (e) {
