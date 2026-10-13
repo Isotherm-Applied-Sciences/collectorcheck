@@ -1,0 +1,20 @@
+{
+  "version": "2.10.0",
+  "monument_established": true,
+  "monument_scope": "versioned-release-marker",
+  "monument_hash_file": "monument.sha256",
+  "canonical_record": "../../canon/v2.10/canonical-record.sha256",
+  "permanence_certificate": "../../permanence/v2.10/certificate.json",
+  "continuity_seal": "../../continuity-seal/v2.10/certificate.json",
+  "lineage_lock": "../../lineage/v2.10/lock/lineage-lock.sha256",
+  "issued_at": "2026-10-13T20:38:47.9293550Z",
+  "monument_rules": {
+    "final_status": "versioned_snapshot",
+    "cannot_be_replaced": false,
+    "cannot_be_removed": false,
+    "must_be_referenced_by_all_future_releases": true,
+    "reference_enforcement": "repository_policy_only",
+    "tamper_evident": true,
+    "integrity_semantics": "sha256_hash_linked"
+  }
+}
