@@ -1,0 +1,1 @@
+// deterministic vendor normalization stub

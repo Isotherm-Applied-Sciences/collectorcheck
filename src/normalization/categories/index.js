@@ -1,0 +1,1 @@
+// deterministic category normalization stub
