@@ -4,6 +4,7 @@ import { validateMetadataResult } from '../metadata/result.js';
 import { runMetadataStabilityTests } from '../../../tests/v2.10/metadata/extraction-stability.test.js';
 import { runMetadataNormalizationStabilityTests } from '../../../tests/v2.10/metadata/normalization-stability.test.js';
 import { runMetadataValueStabilityTests } from '../../../tests/v2.10/metadata/value-stability.test.js';
+import { runCrossFieldStabilityTests } from '../../../tests/v2.10/metadata/crossfield-stability.test.js';
 
 export async function runMetadataTests() {
   const tests = [];
@@ -28,6 +29,8 @@ export async function runMetadataTests() {
   tests.push(...normalizationStability.tests);
   const valueStability = await runMetadataValueStabilityTests();
   tests.push(...valueStability.tests);
+  const crossFieldStability = await runCrossFieldStabilityTests();
+  tests.push(...crossFieldStability.tests);
 
   return { ok: true, tests };
 }
