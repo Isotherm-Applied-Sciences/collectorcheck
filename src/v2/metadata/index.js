@@ -3,7 +3,7 @@ import { validateOcrResult } from '../ocr/contract.js';
 import { extractMetadataFromText } from './extract.js';
 import { validateMetadataResult } from './result.js';
 import { applyMetadataPlugins } from '../plugins/enrich.js';
-import { stableMetadata } from './robustness/extraction-stability.js';
+import { stableNormalizeMetadata } from './robustness/normalization-stability.js';
 
 export async function processFile(filePath, providedOcr = null) {
   const ocr = providedOcr || await extractText(filePath);
@@ -25,12 +25,11 @@ export async function processFile(filePath, providedOcr = null) {
   if (!metadata.ok) return metadata;
 
   const enriched = await applyMetadataPlugins(metadata.metadata);
-  const stable = stableMetadata(enriched);
-  if (!stable.ok) return stable;
+  const stable = stableNormalizeMetadata(enriched);
 
   const result = {
     ...metadata,
-    metadata: stable.metadata,
+    metadata: stable.normalized,
     warnings: [...new Set([...(metadata.warnings || []), ...(stable.warnings || [])])]
   };
 

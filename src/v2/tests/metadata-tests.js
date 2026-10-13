@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { extractMetadataFromText } from '../metadata/extract.js';
 import { validateMetadataResult } from '../metadata/result.js';
 import { runMetadataStabilityTests } from '../../../tests/v2.10/metadata/extraction-stability.test.js';
+import { runMetadataNormalizationStabilityTests } from '../../../tests/v2.10/metadata/normalization-stability.test.js';
 
 export async function runMetadataTests() {
   const tests = [];
@@ -22,6 +23,8 @@ export async function runMetadataTests() {
 
   const stability = await runMetadataStabilityTests();
   tests.push(...stability.tests);
+  const normalizationStability = await runMetadataNormalizationStabilityTests();
+  tests.push(...normalizationStability.tests);
 
   return { ok: true, tests };
 }

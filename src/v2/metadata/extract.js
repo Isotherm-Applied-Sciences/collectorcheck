@@ -1,5 +1,5 @@
 import { metadataResult } from './result.js';
-import { stableMetadata } from './robustness/extraction-stability.js';
+import { stableNormalizeMetadata } from './robustness/normalization-stability.js';
 
 export function extractMetadataFromText(text) {
   if (!text || typeof text !== 'string') {
@@ -45,5 +45,9 @@ export function extractMetadataFromText(text) {
     if (total) break;
   }
 
-  return stableMetadata({ merchant, date, total });
+  const stable = stableNormalizeMetadata({ merchant, date, total });
+  return {
+    ...metadataResult(true, stable.normalized, null),
+    warnings: stable.warnings
+  };
 }
