@@ -3,6 +3,7 @@ import { extractMetadata } from './metadata/pipeline/index.js';
 import { saveJson } from './cloud/local/index.js';
 import { makeStorageKey } from './cloud/interfaces/index.js';
 import { logInfo, logError } from './logging/index.js';
+import { err } from './errors/index.js';
 
 export async function processAll() {
   logInfo('engine.start');
@@ -20,8 +21,10 @@ export async function processAll() {
       const saved = saveJson(key, meta);
       results.push({ file, saved });
       logInfo('engine.process.success', { file, saved });
-    } catch (err) {
-      logError('engine.process.error', { file, error: err.message || err });
+    } catch (e) {
+      const wrapped = err('ENGINE_PROCESS_FAILED', e.message || e, { file });
+      logError('engine.process.error', wrapped.toJSON());
+      results.push({ file, error: wrapped.toJSON() });
     }
   }
 
