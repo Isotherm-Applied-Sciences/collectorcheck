@@ -1,0 +1,1 @@
+// deterministic OCR stub

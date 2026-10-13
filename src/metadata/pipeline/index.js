@@ -1,0 +1,1 @@
+// deterministic metadata pipeline stub

@@ -1,0 +1,1 @@
+// deterministic PDF parser stub

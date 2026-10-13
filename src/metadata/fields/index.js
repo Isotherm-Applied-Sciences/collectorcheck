@@ -1,0 +1,1 @@
+// deterministic field extraction stub
