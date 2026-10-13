@@ -3,6 +3,7 @@ import { extractMetadataFromText } from '../metadata/extract.js';
 import { validateMetadataResult } from '../metadata/result.js';
 import { runMetadataStabilityTests } from '../../../tests/v2.10/metadata/extraction-stability.test.js';
 import { runMetadataNormalizationStabilityTests } from '../../../tests/v2.10/metadata/normalization-stability.test.js';
+import { runMetadataValueStabilityTests } from '../../../tests/v2.10/metadata/value-stability.test.js';
 
 export async function runMetadataTests() {
   const tests = [];
@@ -25,6 +26,8 @@ export async function runMetadataTests() {
   tests.push(...stability.tests);
   const normalizationStability = await runMetadataNormalizationStabilityTests();
   tests.push(...normalizationStability.tests);
+  const valueStability = await runMetadataValueStabilityTests();
+  tests.push(...valueStability.tests);
 
   return { ok: true, tests };
 }

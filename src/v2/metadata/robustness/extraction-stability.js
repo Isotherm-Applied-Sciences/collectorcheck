@@ -1,4 +1,5 @@
 import { metadataResult } from '../result.js';
+import { stableValue } from './value-stability.js';
 
 export function safeJSON(value) {
   try {
@@ -70,23 +71,11 @@ function normalizeKey(key) {
 }
 
 function normalizeValue(value, field, warnings) {
-  if (value === null || value === undefined) {
-    warnings.push(`empty_or_invalid_${field}`);
-    return '';
+  if (value === null || value === undefined || typeof value !== 'object') {
+    const stable = stableValue(value);
+    appendValueWarnings(warnings, stable.warnings, field);
+    return stable.value;
   }
-  if (typeof value === 'string') {
-    const normalized = value.trim();
-    if (!normalized) warnings.push(`empty_or_invalid_${field}`);
-    return normalized;
-  }
-  if (typeof value === 'number') {
-    if (!Number.isFinite(value)) {
-      warnings.push(`empty_or_invalid_${field}`);
-      return '';
-    }
-    return value;
-  }
-  if (typeof value === 'boolean') return value;
   if (Array.isArray(value)) return value.map((item, index) => normalizeNestedValue(item, `${field}_${index}`, warnings));
   if (typeof value === 'object') return normalizeNestedObject(value, field, warnings);
 
@@ -112,25 +101,25 @@ function normalizeNestedObject(value, field, warnings) {
 }
 
 function normalizeNestedValue(value, field, warnings) {
-  if (value === null || value === undefined) {
-    warnings.push(`empty_or_invalid_${field}`);
-    return '';
+  if (value === null || value === undefined || typeof value !== 'object') {
+    const stable = stableValue(value);
+    appendValueWarnings(warnings, stable.warnings, field);
+    return stable.value;
   }
-  if (typeof value === 'string') {
-    const normalized = value.trim();
-    if (!normalized) warnings.push(`empty_or_invalid_${field}`);
-    return normalized;
-  }
-  if (typeof value === 'number') {
-    if (!Number.isFinite(value)) {
-      warnings.push(`empty_or_invalid_${field}`);
-      return '';
-    }
-    return value;
-  }
-  if (typeof value === 'boolean') return value;
   if (Array.isArray(value)) return value.map((item, index) => normalizeNestedValue(item, `${field}_${index}`, warnings));
   if (typeof value === 'object') return normalizeNestedObject(value, field, warnings);
   warnings.push(`empty_or_invalid_${field}`);
   return '';
+}
+
+function appendValueWarnings(warnings, valueWarnings, field) {
+  for (const warning of valueWarnings) {
+    if (warning === 'null_or_undefined_value' || warning === 'empty_string') {
+      warnings.push(`empty_or_invalid_${field}`);
+    } else if (warning === 'whitespace_collapsed') {
+      warnings.push(warning);
+    } else {
+      warnings.push(`${warning}_${field}`);
+    }
+  }
 }
