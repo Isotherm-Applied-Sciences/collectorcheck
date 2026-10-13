@@ -1,0 +1,14 @@
+{
+  "version": "2.10.0",
+  "survivability_verified": true,
+  "replica_scope": "single-repository",
+  "recovery_artifact_count": 8,
+  "recovery_rules": {
+    "replicas_must_reconstruct_lineage": true,
+    "reconstruction_must_match_original_hashes": true,
+    "recovery_must_be_deterministic": true,
+    "tamper_evident": true
+  },
+  "verification_method": "restore each replica into an isolated temporary directory and verify canonical SHA-256 hashes",
+  "verified_at": "2026-10-13T20:33:02.1552078Z"
+}

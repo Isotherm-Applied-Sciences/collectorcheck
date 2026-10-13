@@ -1,0 +1,18 @@
+{
+  "version": "2.10.0",
+  "simulation": "catastrophic_primary_loss",
+  "primary_artifacts_destroyed": [
+    "seal/v2.10/SEAL.txt",
+    "lineage/v2.10/lineage-seal.sha256",
+    "lineage/v2.10/lock/lineage-lock.sha256"
+  ],
+  "recovery_sources": {
+    "replicaA": "../../redundancy/v2.10/replicaA",
+    "replicaB": "../../redundancy/v2.10/replicaB",
+    "replicaC": "../../redundancy/v2.10/replicaC"
+  },
+  "reconstruction_scope": "all_8_preserved_lineage_artifacts",
+  "reconstruction_possible": true,
+  "simulation_method": "restore_to_isolated_temporary_directory_without_reading_primary_payloads",
+  "timestamp": "2026-10-13T20:33:02.1552078Z"
+}
