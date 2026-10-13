@@ -1,0 +1,35 @@
+{
+  "version": "2.10.0",
+  "build": "stable",
+  "timestamp": "2026-10-13T19:55:51.2209182Z",
+  "modules": {
+    "ocr": [
+      "extraction-stability",
+      "normalization-stability",
+      "confidence-stability",
+      "multiblock-stability"
+    ],
+    "metadata": [
+      "extraction-stability",
+      "normalization-stability",
+      "value-stability",
+      "crossfield-stability"
+    ],
+    "provenance": [
+      "chain-stability",
+      "envelope-stability",
+      "tamper-stability",
+      "crossenvelope-stability"
+    ],
+    "cloud": [
+      "request-stability",
+      "response-stability",
+      "retry-stability",
+      "timeout-stability",
+      "circuitbreaker-stability"
+    ],
+    "integration": [
+      "system-stability"
+    ]
+  }
+}
