@@ -1,135 +1,84 @@
-# CollectorCheck — Receipt Verification Gateway
-CollectorCheck is a free, open‑source verification gateway that allows collectors, archivists, and institutions to validate the authenticity, integrity, and provenance of receipts and purchase records. It provides a simple, reliable, and transparent way to confirm that a receipt is real, unaltered, and traceable.
+# CollectorCheck v1
 
-CollectorCheck is part of the **Isotherm Applied Sciences** ecosystem.
+CollectorCheck is a deterministic ingestion, metadata extraction, and cloud-processing engine for receipts and collectible documentation.
 
----
+It provides a command-line interface, a versioned JavaScript API, structured logging and errors, and local and remote-simulation cloud adapters. The current OCR and PDF extractors are deterministic stubs; they provide pipeline wiring, not production text recognition or document verification.
 
-## Features
-- Upload and verify receipts
-- Automatic metadata extraction
-- Integrity and tamper‑checking
-- Structured verification output
-- Local processing (no cloud dependency)
-- Lightweight Flask backend
-- Simple frontend viewer
-- MIT‑licensed and open for contributors
+## Requirements
 
----
+- Node.js 22.12 or newer
+- Git
 
-## Project Structure
-(Indented instead of fenced code block)
-
-collectorcheck/
-    backend/
-        app.py
-        routes/
-        services/
-        models/
-        utils/
-        tests/
-    frontend/
-        index.html
-        static/
-        css/
-        js/
-        components/
-    database/
-        collectorcheck.db
-    uploads/
-        (temporary receipt files)
-    logs/
-    README.md
-    LICENSE
-    .gitignore
-
----
+This repository currently has no `package.json` or third-party runtime dependencies, so `npm install` is not required.
 
 ## Installation
-CollectorCheck runs locally and requires Python 3.10+.
 
-### 1. Clone the repository
+```bash
 git clone https://github.com/Isotherm-Applied-Sciences/collectorcheck.git
 cd collectorcheck
+```
 
-### 2. Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate   (macOS/Linux)
-.venv\Scripts\activate      (Windows)
+## CLI Usage
 
-### 3. Install dependencies
-pip install -r requirements.txt
+The CLI reads files from `receipts/` by default. Set `COLLECTORCHECK_RECEIPTS_DIR` to use a different directory.
 
----
+```bash
+node bin/collectorcheck-cli.mjs snapshot
+node bin/collectorcheck-cli.mjs process
+node bin/collectorcheck-cli.mjs meta path/to/receipt.jpg
+```
 
-## Running the Backend
-Start the Flask server:
+On PowerShell, set a custom input directory with:
 
-python backend/app.py
+```powershell
+$env:COLLECTORCHECK_RECEIPTS_DIR = "C:\path\to\receipts"
+```
 
-The API will be available at:
+The process command saves results to `collectorcheck-local/` and `collectorcheck-remote-sim/` by default. Configure these roots with `COLLECTORCHECK_LOCAL_ROOT` and `COLLECTORCHECK_REMOTE_ROOT` respectively.
 
-http://127.0.0.1:5000
+## JavaScript API
 
----
+Import the v1 API surface from `src/api/index.js`:
 
-## Running the Frontend
-Open:
+```js
+import { v1 } from './src/api/index.js';
 
-frontend/index.html
+const result = await v1.processAll();
+console.log(result);
+```
 
-The viewer will connect to the backend automatically.
+The API also exposes `v1.snapshot()`, `v1.extractMetadata(file)`, and `v1.validateApiResult(result)`. Responses use this shape:
 
----
+```json
+{
+  "ok": true,
+  "data": {},
+  "error": null
+}
+```
 
-## API Endpoints
+Errors use `ok: false`, `data: null`, and an `error` object containing `code`, `msg`, and `data`. See [the v1 API reference](src/api/docs/v1.md) and [machine-readable API description](src/api/docs/v1.json) for details.
 
-### POST /verify
-Upload a receipt and receive a verification result.
+## Tests
 
-### GET /status
-Health check for the backend.
+Run the API contract tests with:
 
-### GET /version
-Returns the current CollectorCheck version.
+```bash
+node --input-type=module -e "import { runApiContractTests } from './src/api/tests/contract-tests.js'; console.log(await runApiContractTests());"
+```
 
----
+Run the documentation checks with:
 
-## Contributing
-Contributions are welcome.
+```bash
+node --input-type=module -e "import { runApiDocsTests } from './src/api/tests/docs-tests.js'; console.log(runApiDocsTests());"
+```
 
-### Steps
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-4. Follow the coding style in /backend and /frontend
+## Architecture
 
-See CONTRIBUTING.md for full guidelines.
+- **Ingestion** snapshots the configured receipt directory.
+- **Metadata pipeline** routes PDFs and images to deterministic parser stubs and normalizes extracted fields.
+- **Engine** coordinates ingestion, metadata extraction, and cloud writes.
+- **Cloud adapters** write JSON locally and to the remote simulation directory, returning contract-validated results.
+- **API** exposes the versioned v1 methods and response contract.
 
----
-
-## Roadmap
-
-### v1.1
-- Improved metadata extraction
-- Enhanced tamper‑detection heuristics
-- Frontend UI polish
-
-### v2.0
-- Multi‑receipt batch verification
-- Advanced provenance scoring
-- Optional cloud sync module
-
-See ROADMAP.md for details.
-
----
-
-## License
-CollectorCheck is released under the **MIT License**.
-You are free to use, modify, distribute, and integrate it into commercial or open‑source projects.
-
----
-
-## Maintained by
-**Isotherm Applied Sciences Inc.**
-Ottawa, Canada
+Future API versions will be published under `src/api/v2`, `src/api/v3`, and so on. Contributions should follow the conventions in [CONTRIBUTING.md](CONTRIBUTING.md). CollectorCheck is released under the MIT License; see [LICENSE](LICENSE).
