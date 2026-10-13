@@ -1,6 +1,5 @@
-// CollectorCheck v1 — Cloud Adapter Entrypoint
-// Deterministic stubs for local, remote, and interfaces
+import * as local from './local/index.js';
+import * as remote from './remote/index.js';
+import { makeStorageKey } from './interfaces/index.js';
 
-export * as local from './local/index.js';
-export * as remote from './remote/index.js';
-export * as interfaces from './interfaces/index.js';
+export { local, remote, makeStorageKey };

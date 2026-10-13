@@ -1,8 +1,6 @@
 import { snapshot } from './ingestion/watcher/index.js';
 import { extractMetadata } from './metadata/pipeline/index.js';
-import { saveJson } from './cloud/local/index.js';
-import { uploadJson } from './cloud/remote/index.js';
-import { makeStorageKey } from './cloud/interfaces/index.js';
+import { local, remote, makeStorageKey } from './cloud/index.js';
 import { logInfo, logError } from './logging/index.js';
 import { err } from './errors/index.js';
 
@@ -19,8 +17,8 @@ export async function processAll() {
       logInfo('engine.process.file', { file });
       const meta = await extractMetadata(file);
       const key = makeStorageKey(file) + '.json';
-      const savedLocal = saveJson(key, meta);
-      const savedRemote = await uploadJson(key, meta);
+      const savedLocal = local.saveJson(key, meta);
+      const savedRemote = await remote.uploadJson(key, meta);
       results.push({ file, local: savedLocal, remote: savedRemote });
       logInfo('engine.process.success', { file, local: savedLocal, remote: savedRemote });
     } catch (e) {
