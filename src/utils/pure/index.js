@@ -1,0 +1,1 @@
+// deterministic pure functions stub
