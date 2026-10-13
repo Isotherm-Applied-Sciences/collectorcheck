@@ -9,6 +9,7 @@ import { processFileWithProvenance } from '../provenance/index.js';
 import { hashFileSha256, hashTextSha256 } from '../provenance/hash.js';
 import { validateProvenanceResult } from '../provenance/contract.js';
 import { runProvenanceChainStabilityTests } from '../../../tests/v2.10/provenance/chain-stability.test.js';
+import { runEnvelopeStabilityTests } from '../../../tests/v2.10/provenance/envelope-stability.test.js';
 
 export async function runProvenanceTests() {
   const file = path.join(os.tmpdir(), `collectorcheck-prov-${Date.now()}.png`);
@@ -45,9 +46,14 @@ export async function runProvenanceTests() {
   }
 
   const chainTests = await runProvenanceChainStabilityTests();
+  const envelopeTests = await runEnvelopeStabilityTests();
 
   return {
     ok: true,
-    tests: ['Provenance chain (file + text + metadata + timestamp)', ...chainTests.tests]
+    tests: [
+      'Provenance chain (file + text + metadata + timestamp)',
+      ...chainTests.tests,
+      ...envelopeTests.tests
+    ]
   };
 }
