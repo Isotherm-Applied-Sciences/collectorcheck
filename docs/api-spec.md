@@ -34,3 +34,141 @@ This document defines the deterministic Gateway API for CollectorCheck. It speci
 - **Activity Intake**
 
 ---
+
+## Verification Submission Endpoints
+
+### POST /verify
+
+Submit a receipt, identity attributes, and activity metadata for deterministic verification.
+
+**Request Body**
+```json
+{
+	"receipt": "<base64-encoded>",
+	"identity": {
+		"hydropass_id": "string",
+		"attributes": {}
+	},
+	"activity": {
+		"timestamp": "ISO-8601",
+		"location": "string",
+		"metadata": {}
+	}
+}
+```
+
+**Response**
+```json
+{
+	"verification_id": "string",
+	"result": "authentic | inauthentic | indeterminate",
+	"continuity_record_id": "string",
+	"provenance_record_id": "string"
+}
+```
+
+**Deterministic Invariants**
+- Same input → same output
+- No hidden heuristics
+- No cloud-dependent randomness
+- Fully reproducible verification
+
+---
+
+## Continuity Record Endpoints
+
+### GET /continuity/{id}
+
+Retrieve a continuity record generated during verification.
+
+**Response**
+```json
+{
+	"continuity_record_id": "string",
+	"identity_lineage": {},
+	"activity_lineage": {},
+	"credential_lineage": {},
+	"verification_lineage": {},
+	"timestamp": "ISO-8601"
+}
+```
+
+---
+
+## Provenance Inspection Endpoints
+
+### GET /provenance/{id}
+
+Retrieve provenance metadata associated with a verification.
+
+**Response**
+```json
+{
+	"provenance_record_id": "string",
+	"source": "collectorcheck",
+	"identity_lineage": {},
+	"activity_lineage": {},
+	"credential_lineage": {},
+	"verification_lineage": {},
+	"transport": {
+		"databus_id": "string",
+		"metadata": {}
+	}
+}
+```
+
+**Provenance Guarantees**
+- Deterministic provenance
+- Unified lineage model
+- Continuity-safe transport metadata
+
+---
+
+## Identity Intake Endpoints
+
+### POST /identity/intake
+
+Submit identity attributes for deterministic intake.
+
+**Request Body**
+```json
+{
+	"hydropass_id": "string",
+	"attributes": {}
+}
+```
+
+**Response**
+```json
+{
+	"intake_id": "string",
+	"status": "accepted",
+	"continuity_record_id": "string"
+}
+```
+
+---
+
+## Activity Intake Endpoints
+
+### POST /activity/intake
+
+Submit activity metadata for deterministic intake.
+
+**Request Body**
+```json
+{
+	"timestamp": "ISO-8601",
+	"location": "string",
+	"metadata": {}
+}
+```
+
+**Response**
+```json
+{
+	"intake_id": "string",
+	"status": "accepted",
+	"continuity_record_id": "string"
+}
+```
