@@ -2,6 +2,37 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Versioning](#versioning)
+- [Endpoint Groups](#endpoint-groups)
+- [Identity Exposure Endpoints](#identity-exposure-endpoints)
+- [Credential Issuance Endpoints](#credential-issuance-endpoints)
+- [Credential Validation Endpoints](#credential-validation-endpoints)
+- [Identity Lineage Retrieval Endpoints](#identity-lineage-retrieval-endpoints)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This API specification defines the deterministic Exposure & Credential API for HydroPass.
+- It is aligned with the Isotherm Identity Substrate and Databus transport model.
+- Future versions will include scoped exposure surfaces, privacy-preserving verification flows, and extended credential lineage.
+
+---
+
 ## Purpose
 
 This document defines the deterministic Exposure & Credential API for HydroPass. It specifies the endpoints, request and response structures, and invariants required to maintain continuity, privacy, and stable identity attributes across the Isotherm ecosystem.
