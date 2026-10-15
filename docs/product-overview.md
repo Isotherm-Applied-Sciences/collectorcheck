@@ -92,6 +92,53 @@ CollectorCheck provides a trust foundation for ecosystems that depend on reliabl
 
 ---
 
+## CollectorCheck Architecture Overview
+
+CollectorCheck is structured as a deterministic verification gateway composed of four primary subsystems:
+
+1. **Identity Subsystem**
+   Handles intake, validation, and continuity-safe storage of identity attributes.
+
+2. **Activity Subsystem**
+   Captures activity or artifact metadata and prepares it for provenance linking.
+
+3. **Provenance Subsystem**
+   Generates lineage metadata and attaches it to identity and activity records.
+
+4. **Continuity Subsystem**
+   Produces stable, inspectable continuity records that can be revalidated over time.
+
+These subsystems are orchestrated through the Gateway API to produce deterministic verification outputs.
+
+---
+
+## Verification Pipeline Diagram (ASCII)
+
+Below is a text-based diagram of the CollectorCheck verification pipeline:
+
+```
+Identity Intake --> Activity Intake --> Provenance Link
+Provenance Link --> Continuity Record Creation --> Gateway Output
+```
+
+This diagram illustrates the deterministic flow from identity → activity → provenance → continuity → output.
+
+---
+
+## Continuity & Provenance Model Diagram (ASCII)
+
+The following diagram shows how identity, activity, and artifact lineage combine into a unified provenance record:
+
+```
+Identity Lineage --------\
+Activity Lineage --------+--> Unified Provenance Record --> Continuity Record
+Artifact Lineage --------/
+```
+
+This model ensures that every verification has a clear, inspectable lineage that supports long-term trust-traffic.
+
+---
+
 ## HydroPass (Preview)
 
 HydroPass is a dignity-first identity credential focused on continuity and respect. It enables individuals to carry trusted identity across contexts without overexposure.
