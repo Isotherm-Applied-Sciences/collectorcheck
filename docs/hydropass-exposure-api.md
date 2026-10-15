@@ -34,3 +34,122 @@ This document defines the deterministic Exposure & Credential API for HydroPass.
 - **Identity Lineage Retrieval**
 
 ---
+
+## Identity Exposure Endpoints
+
+### POST /expose
+
+Expose a scoped subset of identity attributes in a privacy-preserving manner.
+
+**Request Body**
+```json
+{
+	"hydropass_id": "string",
+	"requested_attributes": ["string"],
+	"scope": "minimal | extended",
+	"metadata": {}
+}
+```
+
+**Response**
+```json
+{
+	"exposure_id": "string",
+	"attributes": {},
+	"continuity_record_id": "string"
+}
+```
+
+**Exposure Invariants**
+- Attribute exposure must be deterministic
+- No over-exposure beyond requested scope
+- Continuity-safe identity lineage
+
+---
+
+## Credential Issuance Endpoints
+
+### POST /credential/issue
+
+Issue a HydroPass credential with deterministic identity attributes.
+
+**Request Body**
+```json
+{
+	"hydropass_id": "string",
+	"attributes": {},
+	"metadata": {}
+}
+```
+
+**Response**
+```json
+{
+	"credential_id": "string",
+	"status": "issued",
+	"continuity_record_id": "string"
+}
+```
+
+**Issuance Guarantees**
+- Deterministic credential attributes
+- Continuity-safe issuance lineage
+- No retroactive mutation
+
+---
+
+## Credential Validation Endpoints
+
+### POST /credential/validate
+
+Validate a HydroPass credential deterministically.
+
+**Request Body**
+```json
+{
+	"credential_id": "string",
+	"hydropass_id": "string",
+	"metadata": {}
+}
+```
+
+**Response**
+```json
+{
+	"validation_id": "string",
+	"result": "valid | invalid",
+	"continuity_record_id": "string"
+}
+```
+
+**Validation Rules**
+- Deterministic validation
+- Unified identity lineage
+- Continuity-safe validation metadata
+
+---
+
+## Identity Lineage Retrieval Endpoints
+
+### GET /identity/lineage/{id}
+
+Retrieve identity lineage associated with a HydroPass identity.
+
+**Response**
+```json
+{
+	"lineage_id": "string",
+	"identity_lineage": {},
+	"credential_lineage": {},
+	"exposure_lineage": {},
+	"validation_lineage": {},
+	"timestamp": "ISO-8601"
+}
+```
+
+**Lineage Guarantees**
+- Deterministic lineage propagation
+- Unified lineage model
+- Continuity-safe identity history
+
+---
