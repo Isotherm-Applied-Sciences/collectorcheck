@@ -2,6 +2,42 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Problem Statement](#problem-statement)
+- [Core Principles](#core-principles)
+- [Components](#components)
+- [Substrate Architecture Overview](#substrate-architecture-overview)
+- [Identity Substrate Core](#identity-substrate-core)
+- [Lineage Engine](#lineage-engine)
+- [Continuity Transport Layer](#continuity-transport-layer)
+- [Provenance Surface](#provenance-surface)
+- [Databus Architecture Diagram](#databus-architecture-diagram-ascii)
+- [Cross-Product Substrate Alignment](#cross-product-substrate-alignment)
+- [Why Deterministic Transport Matters](#why-deterministic-transport-matters)
+- [Why Databus Matters (Expanded)](#why-databus-matters-expanded)
+- [Next Steps](#next-steps-repository-roadmap)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This document is part of the Isotherm identity substrate documentation surface.
+- Databus integrates directly with HydroPass and CollectorCheck.
+- This file is intended to remain stable and versioned across releases.
+
+---
+
 ## Purpose
 
 Databus is the universal identity substrate that carries continuity, provenance, and deterministic identity attributes across ecosystems. It provides the underlying transport layer for identity lineage and verification flows.
@@ -153,5 +189,14 @@ Databus provides:
 - substrate-level integration with HydroPass and CollectorCheck
 
 Databus is the backbone of the Isotherm identity ecosystem.
+
+---
+
+## Next Steps (Repository Roadmap)
+
+1. **Databus Substrate Specification** — Create `docs/databus-substrate-spec.md` defining deterministic identity transport rules.
+2. **Unified Lineage Model Document** — Add `docs/lineage-model.md` describing identity, activity, credential, and provenance lineage.
+3. **Continuity Transport API** — Add `docs/databus-transport-api.md` defining continuity-safe identity movement.
+4. **Unified Identity Substrate Document** — Create `docs/identity-substrate.md` linking Databus, HydroPass, and CollectorCheck into a single continuity model.
 
 ---
