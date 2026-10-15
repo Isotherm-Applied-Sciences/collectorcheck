@@ -54,3 +54,144 @@ Databus is the deterministic transport layer of the Isotherm ecosystem:
 5. Receiving systems ingest transported payloads deterministically.
 
 ---
+
+## Detailed Transport Flow
+
+Databus transports identity, continuity, provenance, lineage, authenticity, and credentials deterministically across Isotherm systems.
+
+### Transport Stages
+1. **Payload Intake**
+   - Identity, continuity, provenance, or credentials submitted for transport.
+   - Identity Substrate Adapter normalizes payloads.
+
+2. **Deterministic Transport Construction**
+   - Transport Engines construct deterministic transport envelopes.
+   - No heuristic inference or probabilistic routing.
+
+3. **Transport Integrity Validation**
+   - Transport envelopes validated for structure, lineage, and authenticity.
+
+4. **Lineage & Authenticity Update**
+   - Lineage and authenticity signals updated for transported identity.
+
+5. **Deterministic Delivery**
+   - Receiving systems ingest payloads deterministically.
+
+---
+
+## Component Interaction Diagram (ASCII)
+
+```text
+		+-----------------------------+
+		| Transport Intake Surface    |
+		| (UI / API)                  |
+		+--------------+--------------+
+					   |
+					   v
+		+--------------+--------------+
+		| Identity Substrate Adapter  |
+		+--------------+--------------+
+					   |
+					   v
+		+--------------+--------------+
+		| Transport Engines           |
+		| (Identity / Continuity /    |
+		|  Provenance / Credentials)  |
+		+--------------+--------------+
+					   |
+					   v
+		+--------------+--------------+
+		| Transport Validation Engine |
+		+--------------+--------------+
+					   |
+					   v
+		+--------------+--------------+
+		| Lineage & Authenticity      |
+		+--------------+--------------+
+					   |
+					   v
+		+--------------+--------------+
+		| Deterministic Delivery      |
+		+-----------------------------+
+```
+
+---
+
+## Product-Level Invariants
+
+Databus must satisfy the following invariants:
+
+- Deterministic transport semantics.
+- Same payload + same continuity → same transport envelope.
+- No probabilistic routing or heuristic inference.
+- Immutable lineage and authenticity propagation.
+- Deterministic delivery to receiving systems.
+
+---
+
+## Product Failure Domains
+
+### Intake Failure Domain
+- Invalid payload.
+- Missing or malformed continuity or provenance.
+- Identity normalization failure.
+
+### Transport Construction Failure Domain
+- Deterministic envelope construction failure.
+- Unsupported payload type.
+- Invariant violation in transport logic.
+
+### Validation Failure Domain
+- Transport integrity mismatch.
+- Lineage inconsistency.
+- Authenticity signal propagation failure.
+
+### Delivery Failure Domain
+- Receiving system mismatch.
+- Unauthorized payload delivery.
+- Delivery routing failure.
+
+---
+
+## Integration with Identity Substrate
+
+Databus uses the Identity Substrate to:
+
+- Normalize identity, continuity, provenance, and credential payloads.
+- Construct deterministic transport envelopes.
+- Validate lineage and authenticity.
+- Update lineage and authenticity signals.
+
+All interactions with the substrate are deterministic and invariant-checked.
+
+---
+
+## Integration with CollectorCheck and HydroPass
+
+### CollectorCheck → Databus
+- Verified identity, continuity, provenance, and authenticity signals feed into Databus for transport.
+- Verification events become part of transport lineage.
+
+### HydroPass → Databus
+- Issued credentials and associated lineage can be transported via Databus.
+- Authenticity and lineage signals propagate across systems using deterministic transport semantics.
+
+---
+
+## Transport Lifecycle
+
+```text
+Payload Intake
+	↓
+Normalization (Substrate Adapter)
+	↓
+Deterministic Transport Construction
+	↓
+Transport Validation
+	↓
+Lineage & Authenticity Update
+	↓
+Deterministic Delivery
+```
+
+---
