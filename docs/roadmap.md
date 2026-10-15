@@ -2,6 +2,38 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Roadmap Structure](#roadmap-structure)
+- [CollectorCheck Roadmap](#collectorcheck-roadmap)
+- [HydroPass Roadmap](#hydropass-roadmap)
+- [Databus Roadmap](#databus-roadmap)
+- [Identity Substrate Roadmap](#identity-substrate-roadmap)
+- [Cross-Product Milestones](#cross-product-milestones)
+- [Release Sequencing](#release-sequencing)
+- [Versioning Strategy](#versioning-strategy)
+- [Next Steps](#next-steps-repository-roadmap)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This roadmap unifies CollectorCheck, HydroPass, Databus, and the Identity Substrate.
+- It is intended to remain stable and versioned across releases.
+- Future roadmap documents will include API sequencing, substrate-level milestones, and cross-product release coordination.
+
+---
+
 ## Purpose
 
 This roadmap unifies the development trajectories of CollectorCheck, HydroPass, Databus, and the Isotherm Identity Substrate. It provides a deterministic, continuity-first plan for product evolution across the ecosystem.
@@ -127,3 +159,15 @@ A unified roadmap ensures that identity, continuity, and provenance evolve toget
 - **Major Versions** — Introduce new substrate-level capabilities or cross-product integration.
 - **Minor Versions** — Add new API endpoints, lineage types, or continuity rules.
 - **Patch Versions** — Fix deterministic behavior, continuity drift, or provenance inconsistencies.
+
+---
+
+## Next Steps (Repository Roadmap)
+
+1. **Unified Identity Substrate Specification** — Create `docs/identity-substrate-spec.md` defining deterministic identity transport and continuity rules.
+2. **Unified Lineage Model Document** — Add `docs/lineage-model.md` describing identity, activity, credential, and verification lineage across all products.
+3. **Cross-Product API Surface** — Add `docs/substrate-api.md` defining deterministic API interactions between HydroPass, Databus, and CollectorCheck.
+4. **Substrate Architecture Diagram (Extended)** — Add multi-layer ASCII diagrams showing substrate-level flows across all products.
+5. **Continuity & Provenance Audit Guide** — Create `docs/substrate-audit-guide.md` defining how continuity and provenance can be inspected across the ecosystem.
+
+---
