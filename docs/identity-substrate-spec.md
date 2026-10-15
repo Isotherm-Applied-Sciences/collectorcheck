@@ -2,6 +2,40 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Substrate Invariants](#substrate-invariants)
+- [Canonical Object Model](#canonical-object-model)
+- [Continuity Foundations](#continuity-foundations)
+- [Provenance Foundations](#provenance-foundations)
+- [Deterministic Identity Grammar](#deterministic-identity-grammar)
+- [Continuity Timelines](#continuity-timelines)
+- [Provenance Semantics](#provenance-semantics)
+- [Unified Lineage Model](#unified-lineage-model)
+- [Substrate-Level Authenticity Signals](#substrate-level-authenticity-signals)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This specification defines the deterministic identity substrate used by CollectorCheck, HydroPass, and Databus.
+- It provides the canonical grammar for identity, continuity, provenance, lineage, and authenticity across the ecosystem.
+- Future versions will include multi-hop lineage propagation, extended authenticity signals, and substrate-level transport semantics.
+
+---
+
 ## Purpose
 
 The Identity Substrate defines the deterministic grammar for identity, continuity, provenance, and lineage across the Isotherm ecosystem. It provides the sealed, reproducible foundation that CollectorCheck, HydroPass, and Databus operate on.
