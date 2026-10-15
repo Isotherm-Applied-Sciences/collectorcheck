@@ -2,6 +2,41 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Architectural Role in Isotherm](#architectural-role-in-isotherm)
+- [Core Components](#core-components)
+- [High-Level Verification Flow](#high-level-verification-flow)
+- [Detailed Verification Flow](#detailed-verification-flow)
+- [Component Interaction Diagram](#component-interaction-diagram-ascii)
+- [Product-Level Invariants](#product-level-invariants)
+- [Product Failure Domains](#product-failure-domains)
+- [Integration with Identity Substrate](#integration-with-identity-substrate)
+- [Integration with HydroPass and Databus](#integration-with-hydropass-and-databus)
+- [Artifact Intake Lifecycle](#artifact-intake-lifecycle)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This product architecture defines the internal behavior of CollectorCheck within the Isotherm ecosystem.
+- It integrates directly with the Identity Substrate, Unified Identity Architecture, and CollectorCheck Gateway API.
+- Future versions will include extended verification diagrams, multi-artifact verification flows, and cross-system authenticity propagation.
+
+---
+
 ## Purpose
 
 This document defines the product-level architecture for CollectorCheck, Isotherm’s deterministic artifact verification system. It describes how CollectorCheck uses the Identity Substrate, Unified Identity Architecture, and CollectorCheck Gateway API to verify artifacts, generate continuity, and record provenance.
