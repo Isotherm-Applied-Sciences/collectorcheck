@@ -2,6 +2,37 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Versioning](#versioning)
+- [Endpoint Groups](#endpoint-groups)
+- [Identity Transport Endpoints](#identity-transport-endpoints)
+- [Transport Metadata Retrieval Endpoints](#transport-metadata-retrieval-endpoints)
+- [Lineage Propagation Endpoints](#lineage-propagation-endpoints)
+- [Provenance Transport Inspection Endpoints](#provenance-transport-inspection-endpoints)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This API specification defines the deterministic Identity Transport API for Databus.
+- It is aligned with the Isotherm Identity Substrate and the CollectorCheck/HydroPass API surfaces.
+- Future versions will include multi-hop transport, extended lineage propagation, and cross-product provenance validation.
+
+---
+
 ## Purpose
 
 This document defines the deterministic Identity Transport API for Databus. It specifies the endpoints, request and response structures, and invariants required to maintain continuity, provenance, and stable identity movement across the Isotherm ecosystem.
