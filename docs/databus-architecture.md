@@ -2,6 +2,41 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Architectural Role in Isotherm](#architectural-role-in-isotherm)
+- [Core Components](#core-components)
+- [High-Level Transport Flow](#high-level-transport-flow)
+- [Detailed Transport Flow](#detailed-transport-flow)
+- [Component Interaction Diagram](#component-interaction-diagram-ascii)
+- [Product-Level Invariants](#product-level-invariants)
+- [Product Failure Domains](#product-failure-domains)
+- [Integration with Identity Substrate](#integration-with-identity-substrate)
+- [Integration with CollectorCheck and HydroPass](#integration-with-collectorcheck-and-hydropass)
+- [Transport Lifecycle](#transport-lifecycle)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This product architecture defines the internal behavior of Databus within the Isotherm ecosystem.
+- It integrates directly with the Identity Substrate, Unified Identity Architecture, and Databus Transport API.
+- Future versions will include extended transport diagrams, multi-payload routing flows, and cross-system authenticity propagation.
+
+---
+
 ## Purpose
 
 This document defines the product-level architecture for Databus, Isotherm’s deterministic identity transport system. It describes how Databus moves identity, continuity, provenance, lineage, authenticity, and credentials across Isotherm systems.
