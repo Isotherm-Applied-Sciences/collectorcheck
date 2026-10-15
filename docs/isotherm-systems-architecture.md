@@ -63,3 +63,143 @@ Defines how external systems interact with Isotherm:
 - External transport and routing systems
 
 ---
+
+## System Interaction Diagram (ASCII)
+
+```text
+		  +--------------------------------------+
+		  |      Identity Substrate (Core)       |
+		  | Deterministic Grammar & Data Models  |
+		  +--------------------+------------------+
+							   |
+							   v
+		+----------------------+----------------------+
+		|        Service/API Layer (Product APIs)     |
+		|  CollectorCheck | HydroPass | Databus       |
+		+----------------------+----------------------+
+							   |
+							   v
+		+----------------------+----------------------+
+		|     Product/Application Layer               |
+		|  Verification | Credentialing | Transport   |
+		+----------------------+----------------------+
+							   |
+							   v
+		+----------------------+----------------------+
+		|     Integration/Boundary Layer              |
+		| External Identity | External Verification   |
+		| External Transport | External Provenance    |
+		+------------------------------------------------+
+```
+
+---
+
+## Cross-System Identity Flow
+
+Identity moves deterministically across Isotherm systems:
+
+```text
+Identity Substrate
+	↓
+CollectorCheck (Verification)
+	↓
+HydroPass (Credentialing)
+	↓
+Databus (Transport)
+	↓
+Unified Lineage Model
+```
+
+### Flow Guarantees
+- Deterministic transitions
+- Immutable continuity and provenance
+- Unified lineage aggregation
+
+---
+
+## System Invariants
+
+### Substrate Layer Invariants
+- Canonical identity grammar
+- Deterministic continuity and provenance
+- Immutable lineage
+- Deterministic authenticity signals
+
+### Service/API Layer Invariants
+- Deterministic request/response semantics
+- No probabilistic behavior
+- No retroactive mutation
+- Continuity-safe propagation
+
+### Product/Application Layer Invariants
+- Deterministic verification
+- Deterministic credential issuance
+- Deterministic identity transport
+
+### Integration/Boundary Layer Invariants
+- Deterministic external intake
+- Provenance-safe external transitions
+- No heuristic inference from external systems
+
+---
+
+## Failure Domains
+
+### Substrate Failure Domain
+- Invalid canonical object
+- Continuity/provenance mismatch
+- Lineage propagation failure
+
+### API Failure Domain
+- Invalid request schema
+- Deterministic invariant violation
+- Continuity or provenance break
+
+### Product Failure Domain
+- Verification mismatch
+- Credential issuance failure
+- Transport delivery failure
+
+### Boundary Failure Domain
+- External identity mismatch
+- External provenance conflict
+- External transport inconsistency
+
+---
+
+## Cross-System Pathways
+
+### Verification → Credentialing Pathway
+```text
+CollectorCheck Continuity
+	↓
+HydroPass Credential Issuance
+```
+
+### Credentialing → Transport Pathway
+```text
+HydroPass Identity Credential
+	↓
+Databus Identity Transport
+```
+
+### Transport → Unified Lineage Pathway
+```text
+Databus Transport Lineage
+	↓
+Unified Lineage Model
+```
+
+---
+
+## System Mapping Table
+
+| Layer | Substrate | CollectorCheck | HydroPass | Databus | External |
+|-------|-----------|----------------|-----------|---------|----------|
+| Identity | Canonical Identity | Verification Intake | Credential Identity | Transport Identity | External Identity |
+| Continuity | Continuity Model | Verification Continuity | Credential Continuity | Transport Continuity | External Continuity |
+| Provenance | Provenance Model | Verification Provenance | Credential Provenance | Transport Provenance | External Provenance |
+| Lineage | Unified Lineage | Verification Lineage | Credential Lineage | Transport Lineage | External Lineage |
+| Authenticity | Authenticity Signals | Verification Authenticity | Credential Authenticity | Transport Authenticity | External Authenticity |
+
+---
