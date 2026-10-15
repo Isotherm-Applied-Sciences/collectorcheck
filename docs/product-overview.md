@@ -1,5 +1,49 @@
 # Isotherm Applied Sciences — Product Overview
 
+---
+
+## Document Index
+
+- [CollectorCheck](#collectorcheck)
+   - [Purpose](#purpose)
+   - [Problem Statement](#problem-statement)
+   - [Design Philosophy](#design-philosophy)
+   - [Verification Flow](#verification-flow)
+   - [Continuity Model](#continuity-model)
+   - [Provenance Model](#provenance-model)
+   - [Gateway API Overview](#gateway-api-overview)
+   - [Trust-Traffic Alignment](#trust-traffic-alignment)
+   - [Architecture Overview](#collectorcheck-architecture-overview)
+   - [Verification Pipeline Diagram](#verification-pipeline-diagram-ascii)
+   - [Continuity & Provenance Diagram](#continuity--provenance-model-diagram-ascii)
+   - [Glossary](#glossary-collectorcheck)
+   - [Design Constraints](#design-constraints)
+   - [Cross-Product Alignment](#cross-product-alignment)
+   - [Why Determinism Matters](#why-determinism-matters)
+   - [Future Directions](#future-directions)
+
+- [HydroPass (Preview)](#hydropass-preview)
+- [Databus (Preview)](#databus-preview)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This document is part of the CollectorCheck documentation surface.
+- HydroPass and Databus will receive dedicated documents in future commits.
+- This file is intended to remain stable and versioned across releases.
+
+---
+
 This document provides a high-level overview of the three core products in the Isotherm Applied Sciences ecosystem: **CollectorCheck**, **HydroPass**, and **Databus**. Each product is designed to support continuity, provenance, and trust across real-world verification flows.
 
 ---
@@ -196,6 +240,15 @@ CollectorCheck will expand in the following areas:
 3. **Databus Substrate Alignment** — Unified identity substrate for cross-platform verification.
 4. **Gateway Analytics** — Inspectable verification metrics for organizations.
 5. **Contributor API** — Deterministic developer-facing API for building verification extensions.
+
+---
+
+## Next Steps (Repository Roadmap)
+
+1. **HydroPass Documentation** — Create `docs/hydropass-overview.md` with identity credential architecture.
+2. **Databus Documentation** — Create `docs/databus-overview.md` with substrate and lineage models.
+3. **CollectorCheck API Specification** — Add `docs/api-spec.md` with deterministic endpoint definitions.
+4. **Unified Identity Substrate Diagram** — Add cross-product architecture diagram linking all three systems.
 
 ---
 
