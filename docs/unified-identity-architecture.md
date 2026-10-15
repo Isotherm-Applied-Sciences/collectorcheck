@@ -2,6 +2,41 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Architectural Layers](#architectural-layers)
+- [Cross-Product Identity Flow](#cross-product-identity-flow)
+- [Deterministic Guarantees](#deterministic-guarantees)
+- [Identity Lifecycle](#identity-lifecycle-deterministic)
+- [Continuity Lifecycle](#continuity-lifecycle)
+- [Provenance Lifecycle](#provenance-lifecycle)
+- [Lineage Lifecycle](#lineage-lifecycle)
+- [Authenticity Signal Flow](#authenticity-signal-flow)
+- [Cross-Product Identity Diagram](#cross-product-identity-diagram-ascii)
+- [Substrate → API → Product Mapping Table](#substrate--api--product-mapping-table)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This overview unifies the Identity Substrate, CollectorCheck, HydroPass, and Databus into a single deterministic identity architecture.
+- It provides the top-level conceptual map for continuity, provenance, lineage, authenticity, and identity transport.
+- Future versions will include extended diagrams, multi-hop lineage propagation, and cross-system authenticity signal modeling.
+
+---
+
 ## Purpose
 
 This document provides a unified overview of the Isotherm identity architecture, describing how the Identity Substrate, CollectorCheck, HydroPass, and Databus interoperate to form a deterministic, continuity-safe, provenance-aligned identity ecosystem.
