@@ -2,6 +2,42 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Problem Statement](#problem-statement)
+- [Core Principles](#core-principles)
+- [Components](#components)
+- [Architecture Overview](#architecture-overview)
+- [Identity Core Model](#identity-core-model)
+- [Continuity Model](#continuity-model)
+- [Exposure Minimization Model](#exposure-minimization-model)
+- [Provenance Alignment](#provenance-alignment)
+- [Integration with CollectorCheck](#integration-with-collectorcheck)
+- [Integration with Databus](#integration-with-databus)
+- [HydroPass Architecture Diagram](#hydropass-architecture-diagram-ascii)
+- [Why HydroPass Matters](#why-hydropass-matters)
+- [Next Steps](#next-steps-repository-roadmap)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This document is part of the Isotherm identity substrate documentation surface.
+- HydroPass integrates directly with CollectorCheck and Databus.
+- This file is intended to remain stable and versioned across releases.
+
+---
+
 ## Purpose
 
 HydroPass is a dignity-first identity credential designed to support continuity, respect, and minimal exposure. It enables individuals to carry trusted identity across contexts without repeatedly disclosing sensitive attributes.
@@ -146,5 +182,14 @@ HydroPass provides:
 - integration with CollectorCheck and Databus
 
 HydroPass is the identity credential that anchors the Isotherm ecosystem.
+
+---
+
+## Next Steps (Repository Roadmap)
+
+1. **HydroPass Credential Specification** — Create `docs/hydropass-credential-spec.md` with deterministic identity attribute rules.
+2. **Exposure Minimization API** — Add `docs/hydropass-exposure-api.md` defining scoped credential surfaces.
+3. **Continuity Lineage Diagram** — Add ASCII diagrams showing identity lineage across HydroPass, CollectorCheck, and Databus.
+4. **Unified Identity Substrate Document** — Create `docs/identity-substrate.md` linking all three products into a single continuity model.
 
 ---
