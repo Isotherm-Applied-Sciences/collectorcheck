@@ -139,6 +139,66 @@ This model ensures that every verification has a clear, inspectable lineage that
 
 ---
 
+## Glossary (CollectorCheck)
+
+- **Determinism** — The property that a verification flow produces the same output given the same inputs.
+- **Continuity** — Long-term stability of identity, activity, and provenance records.
+- **Provenance** — The lineage of identity, activity, and artifacts across verification flows.
+- **Trust-Traffic** — The movement of trust signals across platforms, ecosystems, and verification surfaces.
+- **Gateway Output** — The deterministic result produced by the CollectorCheck verification pipeline.
+- **Continuity Record** — A stable, inspectable record that can be revalidated over time.
+
+---
+
+## Design Constraints
+
+CollectorCheck is built under strict design constraints to ensure long-term reliability:
+
+1. **Deterministic Outputs** — No nondeterministic behavior is allowed in verification flows.
+2. **Stable Identity Attributes** — Identity attributes must not drift across time or platforms.
+3. **Provenance Integrity** — Lineage metadata must remain intact and inspectable.
+4. **Continuity Preservation** — Records must be revalidatable without re-exposing identity.
+5. **Minimal Exposure** — Identity attributes are only used when necessary and never duplicated.
+
+---
+
+## Cross-Product Alignment
+
+CollectorCheck, HydroPass, and Databus form a unified identity substrate:
+
+- **CollectorCheck** — Provides deterministic verification and continuity records.
+- **HydroPass** — Provides dignity-first identity credentials that integrate with CollectorCheck’s continuity model.
+- **Databus** — Provides the universal identity substrate that carries provenance and continuity across ecosystems.
+
+Together, these products create a stable trust foundation for real-world verification flows.
+
+---
+
+## Why Determinism Matters
+
+Determinism is the foundation of trust-traffic. Without deterministic verification:
+
+- identity drift occurs
+- provenance becomes ambiguous
+- continuity records lose meaning
+- verification results cannot be reproduced
+
+CollectorCheck enforces determinism so that verification flows remain stable across time, platforms, and ecosystems.
+
+---
+
+## Future Directions
+
+CollectorCheck will expand in the following areas:
+
+1. **Extended Provenance Models** — Support for multi-hop lineage and artifact chains.
+2. **HydroPass Integration** — Direct credential validation through the continuity model.
+3. **Databus Substrate Alignment** — Unified identity substrate for cross-platform verification.
+4. **Gateway Analytics** — Inspectable verification metrics for organizations.
+5. **Contributor API** — Deterministic developer-facing API for building verification extensions.
+
+---
+
 ## HydroPass (Preview)
 
 HydroPass is a dignity-first identity credential focused on continuity and respect. It enables individuals to carry trusted identity across contexts without overexposure.
