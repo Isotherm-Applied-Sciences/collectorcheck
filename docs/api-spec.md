@@ -2,6 +2,38 @@
 
 ---
 
+## Document Index
+
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Versioning](#versioning)
+- [Endpoint Groups](#endpoint-groups)
+- [Verification Submission Endpoints](#verification-submission-endpoints)
+- [Continuity Record Endpoints](#continuity-record-endpoints)
+- [Provenance Inspection Endpoints](#provenance-inspection-endpoints)
+- [Identity Intake Endpoints](#identity-intake-endpoints)
+- [Activity Intake Endpoints](#activity-intake-endpoints)
+- [Repository Integration Notes](#repository-integration-notes)
+
+---
+
+## Document Version
+
+- **Version:** 1.0
+- **Maintainer:** Isotherm Applied Sciences
+- **Last Updated:** October 2026
+- **Branch:** v2
+
+---
+
+## Repository Integration Notes
+
+- This API specification defines the deterministic Gateway API for CollectorCheck.
+- It is aligned with the Isotherm Identity Substrate and Databus transport model.
+- Future versions will include contributor API surfaces, multi-hop provenance validation, and organization-facing verification analytics.
+
+---
+
 ## Purpose
 
 This document defines the deterministic Gateway API for CollectorCheck. It specifies the endpoints, request and response structures, and invariants required to maintain continuity, provenance, and reproducible verification results.
