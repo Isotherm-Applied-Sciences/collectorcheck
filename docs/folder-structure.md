@@ -1,26 +1,46 @@
+# Folder Structure
+
+Selected release files in the checked-in repository. Ditto components live in `components/`; its helpers live in `utils/`.
+
 ```text
 collectorcheck/
   frontend/
+    package.json
+    package-lock.json
+    webpack.config.js
+    public/
+      index.html
     src/
+      index.jsx
       pages/
-        Upload.jsx
-        List.jsx
-        Detail.jsx
-        Vendors.jsx
-        Tags.jsx
-        Stats.jsx
-        Timeline.jsx
+        UploadPage.jsx
+        ReceiptListPage.jsx
+        ReceiptDetailPage.jsx
+        VendorOverviewPage.jsx
+        VendorReceiptsPage.jsx
+        TagsPage.jsx
+        TagReceiptsPage.jsx
+        StatsPage.jsx
+        TimelinePage.jsx
       components/
-      context/
-        DataContext.jsx
-      utils/
-        api.js
-      Ditto/
         Ditto.jsx
         DittoController.jsx
-        dittoCulture.js
+      context/
+        DataContext.jsx
+        DittoContext.jsx
+      utils/
+        api.js
         dittoEmotion.js
-  collectorcheck-backend/
+        dittoIntelligence.js
+        dittoPredictive.js
+      styles/
+        global.css
+    tests/
+      ditto-boundary.test.js
+  backend/
+    package.json
+    package-lock.json
+    server.js
     src/
       index.js
       routes/
@@ -40,9 +60,28 @@ collectorcheck/
         vendor.js
         tag.js
         view.js
+      db/
+        sqlite.js
+      services/
+        uploadStorage.js
       utils/
         db.js
         ocr.js
         normalize.js
         errors.js
+    tests/
+      endpoints.test.js
+  docs/
+    README.md
+    API.md
+    folder-structure.md
+    architecture.md
+    setup.md
+  .gitignore
+  LICENSE
+  README.md
 ```
+
+`backend/receipts.db`, `backend/uploads/`, dependencies, build output, and private environment files are local runtime data and are excluded from Git. The backend package name remains `collectorcheck-backend`; its directory is `backend/`.
+
+See [developer setup](setup.md) for startup and test commands and [architecture](architecture.md) for the data flow.

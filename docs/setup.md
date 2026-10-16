@@ -13,7 +13,14 @@ node --version
 npm --version
 ```
 
-The checked-in backend directory is `backend/`; `collectorcheck-backend` is its package name. These instructions use the actual repository paths. The README, folder overview, and architecture draft retain the supplied release wording.
+## Get The Source
+
+```bash
+git clone https://github.com/Isotherm-Applied-Sciences/collectorcheck.git
+cd collectorcheck
+```
+
+The checked-in backend directory is `backend/`; `collectorcheck-backend` is its package name. The [folder overview](folder-structure.md) and [architecture diagram](architecture.md) describe the current implementation.
 
 ## Start The Backend
 
@@ -62,10 +69,13 @@ From the repository root:
 
 ```bash
 npm --prefix backend test
+npm --prefix frontend test
 npm --prefix frontend run build
 ```
 
 Backend tests use a temporary SQLite database and clean it up afterward. They cover schema migration, receipt CRUD, vendors, tags, stats, timeline, API prefixes, and compatibility routes. They do not use the normal development database.
+
+Frontend tests enforce the frozen Ditto boundary: no tax inference, tax-pattern learning, or usage-history-based predictions. Contextual help and explicit deterministic organization commands remain available.
 
 The frontend production build is written to `frontend/dist/`. Existing Webpack bundle-size warnings do not prevent compilation. The build command does not start a production web server or package the backend.
 
