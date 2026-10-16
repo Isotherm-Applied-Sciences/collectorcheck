@@ -173,6 +173,7 @@ Manual tags remain available. Ditto does not infer tax relevance, learn tax patt
 - OCR is a stub. Enter vendor, date, and amount manually.
 - `/api/upload` accepts JPEG, PNG, and PDF files up to 5 MiB. It persists metadata, not original file bytes, so downloads from that upload route are unavailable. Legacy disk-backed upload routes retain files separately.
 - This is a public source release, not a hosted service. The local API has no authentication and needs a security review before public deployment.
+- Dependency auditing is not clean: release verification reported 10 backend advisories (including 1 critical and 7 high) and 9 frontend advisories (including 5 high). Review and remediate these before deployment; see [setup security checks](docs/setup.md#dependency-security).
 - Navigation can overflow on narrow mobile screens; that existing layout issue remains open.
 
 ## Verification

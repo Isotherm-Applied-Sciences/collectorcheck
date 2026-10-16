@@ -79,6 +79,19 @@ Frontend tests enforce the frozen Ditto boundary: no tax inference, tax-pattern 
 
 The frontend production build is written to `frontend/dist/`. Existing Webpack bundle-size warnings do not prevent compilation. The build command does not start a production web server or package the backend.
 
+## Dependency Security
+
+Run advisory checks separately from functional tests:
+
+```bash
+npm --prefix backend audit
+npm --prefix frontend audit
+```
+
+At release verification, npm reported 10 backend advisories (2 low, 7 high, 1 critical) and 9 frontend advisories (4 moderate, 5 high). Affected paths include `tar` in SQLite's native installation dependency chain, backend development tooling, and frontend router/development dependencies. Functional test success does not resolve these findings.
+
+Dependency remediation remains open. Do not expose the MVP publicly as a service until the advisory paths and missing authentication have been addressed. Review upgrades and rerun tests; no forced dependency upgrades were applied during source publication.
+
 ## Troubleshooting
 
 - API errors: confirm the backend is running at the URL configured in the frontend.
