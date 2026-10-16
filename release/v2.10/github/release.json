@@ -1,7 +1,0 @@
-{
-  "tag": "v2.10.0",
-  "name": "CollectorCheck v2.10.0 - Stability Pipeline",
-  "body": "This release includes the full v2.10 Stability Pipeline: OCR, metadata, provenance, cloud adapters, and system-wide integration.",
-  "draft": false,
-  "prerelease": false
-}

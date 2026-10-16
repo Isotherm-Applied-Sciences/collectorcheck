@@ -1,3 +1,0 @@
-export function makeStorageKey(filePath) {
-  return filePath.toLowerCase().replace(/[^a-z0-9._-]/g, '_');
-}

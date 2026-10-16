@@ -1,84 +1,158 @@
-# CollectorCheck v1
+## **CollectorCheck — Receipt Ingestion & Provenance Viewer (MVP)**
 
-CollectorCheck is a deterministic ingestion, metadata extraction, and cloud-processing engine for receipts and collectible documentation.
+CollectorCheck is a lightweight, deterministic receipt‑ingestion system designed for personal organization, provenance tracking, and continuity workflows.
+It provides:
 
-It provides a command-line interface, a versioned JavaScript API, structured logging and errors, and local and remote-simulation cloud adapters. The current OCR and PDF extractors are deterministic stubs; they provide pipeline wiring, not production text recognition or document verification.
+- Image/PDF upload
+- OCR extraction (stub in MVP)
+- Vendor/date/amount normalization
+- Receipt list, detail, delete, edit
+- Vendor overview
+- Tag overview
+- Stats (monthly + category totals)
+- Timeline view
+- Frontend + backend integration
+- Safe, bounded Ditto assistant (frozen at contextual/cultural/emotional micro‑tone only)
 
-## Requirements
+CollectorCheck is **not** a tax assistant, insurance assistant, compliance tool, or regulated workflow engine.
 
-- Node.js 22.12 or newer
-- Git
+## **Features**
 
-The package has no third-party runtime dependencies. Run `npm test` to execute the API contract and documentation test suites.
+### ✔ Upload receipts (image/PDF)
 
-## Installation
+### ✔ Automatic normalization
+
+### ✔ Full CRUD
+
+### ✔ Vendor totals
+
+### ✔ Tag totals
+
+### ✔ Monthly stats
+
+### ✔ Timeline view
+
+### ✔ Deterministic backend
+
+### ✔ React frontend
+
+### ✔ Safe Ditto assistant (frozen)
+
+## **Tech Stack**
+
+### **Frontend**
+
+- React
+- React Router
+- Context API
+- Fetch API
+
+### **Backend**
+
+- Node.js
+- Express
+- Multer (file upload)
+- In‑memory DB (MVP)
+
+## **Folder Structure**
+
+```text
+collectorcheck/
+	frontend/
+		src/
+			pages/
+			components/
+			context/
+			utils/
+			Ditto/
+	collectorcheck-backend/
+		src/
+			index.js
+			routes/
+			controllers/
+			models/
+			utils/
+```
+
+## **Backend Endpoints**
+
+### **POST /api/upload**
+Upload a receipt file.
+
+### **GET /api/receipts**
+List all receipts.
+
+### **GET /api/receipts/:id**
+Get receipt detail.
+
+### **PUT /api/receipts/:id**
+Update receipt.
+
+### **DELETE /api/receipts/:id**
+Delete receipt.
+
+### **GET /api/vendors**
+Vendor totals.
+
+### **GET /api/tags**
+Tag totals.
+
+### **GET /api/stats**
+Monthly + category totals.
+
+### **GET /api/timeline**
+Chronological receipts.
+
+## **Setup Instructions**
+
+### **Backend**
 
 ```bash
-git clone https://github.com/Isotherm-Applied-Sciences/collectorcheck.git
-cd collectorcheck
+cd collectorcheck-backend
+npm install
+node src/index.js
 ```
 
-## CLI Usage
+Backend runs on:
 
-The CLI reads files from `receipts/` by default. Set `COLLECTORCHECK_RECEIPTS_DIR` to use a different directory.
+```text
+http://localhost:4000
+```
+
+### **Frontend**
 
 ```bash
-node bin/collectorcheck-cli.mjs snapshot
-node bin/collectorcheck-cli.mjs process
-node bin/collectorcheck-cli.mjs meta path/to/receipt.jpg
+cd frontend
+npm install
+npm start
 ```
 
-On PowerShell, set a custom input directory with:
+Frontend runs on:
 
-```powershell
-$env:COLLECTORCHECK_RECEIPTS_DIR = "C:\path\to\receipts"
+```text
+http://localhost:3001
 ```
 
-The process command saves results to `collectorcheck-local/` and `collectorcheck-remote-sim/` by default. Configure these roots with `COLLECTORCHECK_LOCAL_ROOT` and `COLLECTORCHECK_REMOTE_ROOT` respectively.
+## **Ditto Assistant (Frozen Mode)**
 
-## JavaScript API
+Ditto is included in the frontend but frozen at:
 
-Import the v1 API surface from `src/api/index.js`:
+- contextual help
+- cultural micro‑moments
+- emotional micro‑tone
+- automation
+- guided tours
+- overlays
+- NLP commands
 
-```js
-import { v1 } from './src/api/index.js';
+Ditto **does not** perform:
 
-const result = await v1.processAll();
-console.log(result);
-```
+- narrative inference
+- mood inference
+- life‑event inference
+- behavioral inference
+- regulated domain inference
 
-The API also exposes `v1.snapshot()`, `v1.extractMetadata(file)`, and `v1.validateApiResult(result)`. Responses use this shape:
+## **License**
 
-```json
-{
-  "ok": true,
-  "data": {},
-  "error": null
-}
-```
-
-Errors use `ok: false`, `data: null`, and an `error` object containing `code`, `msg`, and `data`. See [the v1 API reference](src/api/docs/v1.md) and [machine-readable API description](src/api/docs/v1.json) for details.
-
-## Tests
-
-Run the API contract tests with:
-
-```bash
-node --input-type=module -e "import { runApiContractTests } from './src/api/tests/contract-tests.js'; console.log(await runApiContractTests());"
-```
-
-Run the documentation checks with:
-
-```bash
-node --input-type=module -e "import { runApiDocsTests } from './src/api/tests/docs-tests.js'; console.log(runApiDocsTests());"
-```
-
-## Architecture
-
-- **Ingestion** snapshots the configured receipt directory.
-- **Metadata pipeline** routes PDFs and images to deterministic parser stubs and normalizes extracted fields.
-- **Engine** coordinates ingestion, metadata extraction, and cloud writes.
-- **Cloud adapters** write JSON locally and to the remote simulation directory, returning contract-validated results.
-- **API** exposes the versioned v1 methods and response contract.
-
-Future API versions will be published under `src/api/v2`, `src/api/v3`, and so on. Contributions should follow the conventions in [CONTRIBUTING.md](CONTRIBUTING.md). CollectorCheck is released under the MIT License; see [LICENSE](LICENSE).
+MIT (or your choice)

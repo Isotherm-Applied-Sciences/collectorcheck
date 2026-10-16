@@ -1,3 +1,0 @@
-CollectorCheck v2.10
-Stability Pipeline Release
-Build: stable

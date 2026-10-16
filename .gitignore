@@ -1,28 +1,20 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pdb
-*.egg-info/
+# Node dependencies and build output
+node_modules/
 dist/
 build/
+frontend/dist/
 
-# Virtual environments
+# Local configuration and runtime data
 .env
-.venv/
-venv/
+.env.*
+!.env.example
+backend/data/*.json
+backend/receipts.db
+backend/receipts.db-*
+backend/uploads/
 
-# Flask / runtime
-instance/
-uploads/
-database/*.db
-logs/
-
-# OS junk
+# OS and editor files
 .DS_Store
 Thumbs.db
-
-# Editor junk
 .vscode/
 .idea/
