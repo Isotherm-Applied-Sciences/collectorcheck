@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CollectorCheck Receipts</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="CollectorCheck Receipts">
+  <meta property="og:description" content="Free, open-source receipt continuity for modern work.">
+  <meta property="og:url" content="https://collectorcheck.com">
+
+  <!-- CSS -->
+  <style>
+    :root {
+      --bg-light: #f5f7fa;
+      --text-light: #111827;
+      --bg-dark: #0b1c2c;
+      --text-dark: #f5f7fa;
+      --accent: #1f6feb;
+      --accent-soft: #e0ecff;
+      --isotherm-gradient: linear-gradient(90deg, #1f6feb, #06b6d4, #22c55e);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+      .card {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: #1f2937;
+      }
+      .header-bar {
+        box-shadow: 0 0 0 1px #1f2937;
+      }
+    }
+
+    .header-bar {
+      background: var(--isotherm-gradient);
+      color: #ffffff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-title {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .header-sub {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px 24px 28px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e5e7eb;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+
+    h2 {
+      margin-top: 24px;
+      font-size: 1.2rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .meta-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1f2937;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-pill span.icon {
+      font-size: 1.1rem;
+    }
+
+    .receipts {
+      font-size: 22px;
+      margin: 8px 0 4px;
+      min-height: 32px;
+    }
+
+    .receipt {
+      display: inline-block;
+      animation: pop 0.35s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.2) translateY(6px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-top: 24px;
+      margin-bottom: 4px;
+    }
+
+    .repo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .repo-link {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      text-decoration: none;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .repo-link:hover {
+      background: var(--accent-soft);
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 18px 16px 22px;
+      }
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Isotherm-style header -->
+  <div class="header-bar">
+    <div>
+      <div class="header-title">CollectorCheck Receipts</div>
+      <div class="header-sub">An Isotherm Applied Sciences project — built in the open.</div>
+    </div>
+    <div class="header-sub">In active development</div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h1>CollectorCheck Receipts is in active development — and we’re building it in the open.</h1>
+
+      <div class="meta-row">
+        <div class="meta-pill">
+          <span class="icon">📅</span>
+          <span id="dateStamp">Today is …</span>
+        </div>
+        <div class="meta-pill">
+          <span class="icon">🧾</span>
+          <span id="activeMessage">In active development on GitHub — …</span>
+        </div>
+        <div class="meta-pill">
+          <span class="icon">👁️</span>
+          <span id="hitCounter">Visitor count: …</span>
+        </div>
+      </div>
+
+      <div class="section-label">Daily receipt continuity signal</div>
+      <div id="receiptIcons" class="receipts"></div>
+
+      <p>CollectorCheck helps people scan paper receipts with their phones, while also automatically scanning their email inbox for electronic receipts. The CollectorCheck site privately stores paper and digital receipts in the same place. It also lets people sort, manage, categorize, and calculate their expenses without complexity.</p>
+
+      <p>The CollectorCheck.com site is not a business. CollectorCheck is not monetized. There are no subscriptions, no upsells, and no paid tiers.</p>
+
+      <p>We’re building it publicly on GitHub because we don’t have an investor base — we have a community. The repo is open because the problem it solves is bigger than any one person or company. We need contributors, testers, and people who understand the real‑world chaos of modern work.</p>
+
+      <h2>Receipt chaos is real.</h2>
+      <p>Digital receipts didn’t simplify anything — they scattered everything. Receipts now hide in inboxes, apps, spam folders, platform dashboards, login‑locked archives, and proprietary formats.</p>
+
+      <p>People juggling multiple income streams, contract work, remote work, gig work, or small business activity are dealing with the same mess. The documentation burden has quietly shifted onto individuals, and most people don’t realize it until tax season.</p>
+
+      <h2>Governments have already responded.</h2>
+      <p>Across North America and Europe, documentation rules have tightened: expanded reporting requirements, stricter self‑employment audits, more digital‑only receipts, more platform‑specific payout records, and more emphasis on accurate expense tracking. If you earn income in non‑traditional ways, you need continuity.</p>
+
+      <h2>Gig workers feel this the most — but they’re not alone.</h2>
+      <p>Gig work participation keeps rising: 16–18% of U.S. workers, 10–12% in Canada, 11–14% across the EU, and 20–25% monthly participation in major cities.</p>
+
+      <p>Gig workers generate more receipts than any other group — often 20–40 per week, 1,000–2,000 per year. Fuel, food, parking, maintenance, tolls, supplies, subscriptions — it adds up fast. Freelancers, contractors, remote workers, and small business owners face the same documentation overload.</p>
+
+      <p>This isn’t just a gig‑worker problem. It’s a modern‑work problem.</p>
+
+      <h2>Why CollectorCheck exists.</h2>
+      <p>The shift from “side hustle” to real income created a new kind of paperwork chaos. More people are working in more ways: multi‑platform income, hybrid employment, contract work, remote work, small business activity, gig work, and part‑time stacking. But the tools for managing receipts and continuity never evolved with the work itself. People are left with scattered documentation, lost deductions, and unnecessary stress.</p>
+
+      <p>CollectorCheck Receipts is a small, free, open‑source tool designed to bring order to the chaos. It’s being built publicly on GitHub because the need is real, the problem is growing, and the people who understand it best are the ones living it.</p>
+
+      <p>CollectorCheck is early‑stage but active. The repo is open. Development is ongoing. And we’re looking for participants who want to help shape it.</p>
+
+      <div class="section-label">GitHub project surface</div>
+      <div class="repo-row">
+        <a class="repo-link" href="https://github.com/Isotherm-Applied-Sciences/collectorcheck" target="_blank" rel="noopener">
+          <span>View CollectorCheck on GitHub</span>
+        </a>
+        <span id="repoStats">Fetching repo stats…</span>
+      </div>
+
+      <div class="footer">
+        Isotherm Applied Sciences · CollectorCheck Receipts · Built in the open
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript: date, hit counter, animated receipts, GitHub stats -->
+  <script>
+    // Date + active message
+    const now = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const today = now.toLocaleDateString('en-US', options);
+
+    document.getElementById("dateStamp").textContent = "Today is " + today;
+    document.getElementById("activeMessage").textContent =
+      "In active development on GitHub — " + today;
+
+    // Daily receipt icons (one per day of month, animated)
+    const day = now.getDate();
+    const receiptContainer = document.getElementById("receiptIcons");
+    for (let i = 0; i < day; i++) {
+      const span = document.createElement("span");
+      span.textContent = "🧾";
+      span.className = "receipt";
+      span.style.animationDelay = (i * 0.03) + "s";
+      receiptContainer.appendChild(span);
+    }
+
+    // Real hit counter via countapi.xyz
+    fetch("https://api.countapi.xyz/hit/collectorcheck.com/visits")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("hitCounter").textContent =
+          "Visitor count: " + data.value;
+      })
+      .catch(() => {
+        document.getElementById("hitCounter").textContent =
+          "Visitor count: unavailable";
+      });
+
+    // GitHub repo stats (replace owner/repo if needed)
+    fetch("https://api.github.com/repos/isotherm-applied-sciences/collectorcheck")
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.message) {
+          document.getElementById("repoStats").textContent =
+            "⭐ " + data.stargazers_count + "   |   Forks: " + data.forks_count;
+        } else {
+          document.getElementById("repoStats").textContent =
+            "Repo stats unavailable.";
+        }
+      })
+      .catch(() => {
+        document.getElementById("repoStats").textContent =
+          "Repo stats unavailable.";
+      });
+  </script>
+
+</body>
+</html>
