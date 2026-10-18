@@ -173,6 +173,77 @@
       text-align: right;
     }
 
+    body.dark {
+      background-color: #0d1117;
+      color: #e6edf3;
+    }
+
+    .dark .header-bar {
+      background: #161b22;
+      color: #e6edf3;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .dark .card {
+      background-color: #1f242d;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .dark h1,
+    .dark h2,
+    .dark h3 {
+      color: #e6edf3;
+    }
+
+    .dark .header-sub,
+    .dark .section-label,
+    .dark .footer {
+      color: #8b949e;
+    }
+
+    .dark .meta-pill {
+      background: #21262d;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+    }
+
+    .dark a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    .dark a:hover {
+      text-decoration: underline;
+    }
+
+    .dark .repo-link {
+      border-color: #30363d;
+    }
+
+    .dark .repo-link:hover {
+      background-color: #21262d;
+    }
+
+    .dark .receipts {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+    }
+
+    .dark input,
+    .dark textarea,
+    .dark select {
+      background-color: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+    }
+
+    .dark hr {
+      border-color: #30363d;
+    }
+
     @media (max-width: 640px) {
       .card {
         padding: 18px 16px 22px;
@@ -183,7 +254,7 @@
     }
   </style>
 </head>
-<body>
+<body class="dark">
 
   <!-- Isotherm-style header -->
   <div class="header-bar">
