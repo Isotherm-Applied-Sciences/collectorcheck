@@ -16,77 +16,81 @@
   <!-- CSS -->
   <style>
     :root {
-      --bg-light: #f5f7fa;
-      --text-light: #111827;
-      --bg-dark: #0b1c2c;
-      --text-dark: #f5f7fa;
-      --accent: #1f6feb;
-      --accent-soft: #e0ecff;
-      --isotherm-gradient: linear-gradient(90deg, #1f6feb, #06b6d4, #22c55e);
+      --cc-green: #2ea043;
+      --bg-dark: #0d1117;
+      --text-dark: #e6edf3;
+      --panel-dark: #1f242d;
+      --border-dark: #30363d;
+      --muted-dark: #8b949e;
+      --link-dark: #58a6ff;
     }
 
-    body {
+    * { box-sizing: border-box; }
+
+    body.dark {
       margin: 0;
+      padding: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
     }
 
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: var(--bg-dark);
-        color: var(--text-dark);
-      }
-      .card {
-        background: rgba(15, 23, 42, 0.9);
-        border-color: #1f2937;
-      }
-      .header-bar {
-        box-shadow: 0 0 0 1px #1f2937;
-      }
+    .gradient-bar {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #58a6ff 0%, #7ee787 25%, #2ea043 50%, #3fb950 75%, #58a6ff 100%);
     }
 
     .header-bar {
-      background: var(--isotherm-gradient);
-      color: #ffffff;
-      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background-color: #161b22;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .header-title {
-      font-weight: 600;
-      letter-spacing: 0.03em;
+      margin: 0;
+      color: var(--cc-green);
+      font-size: 1.5rem;
     }
 
     .header-sub {
-      font-size: 0.85rem;
-      opacity: 0.9;
+      margin: 0.25rem 0 0;
+      color: var(--muted-dark);
+      font-size: 0.9rem;
     }
 
     .container {
-      max-width: 900px;
-      margin: 32px auto;
-      padding: 0 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .intro p:first-of-type {
+      margin-bottom: 1.5rem;
+      font-size: 1.15rem;
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 24px 24px 28px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-      border: 1px solid #e5e7eb;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: var(--panel-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 8px;
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 1.6rem;
+      margin: 0 0 1rem;
+      color: var(--cc-green);
     }
 
     h2 {
-      margin-top: 24px;
-      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: var(--cc-green);
     }
 
     p {
@@ -97,48 +101,45 @@
     .meta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
+      gap: 0.75rem;
     }
 
     .meta-pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #1f2937;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 10px;
+      color: var(--text-dark);
+      background: #161b22;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
     }
 
-    .meta-pill span.icon {
-      font-size: 1.1rem;
+    .meta-pill span.icon { font-size: 1.1rem; }
+
+    .section-label {
+      margin-top: 24px;
+      margin-bottom: 4px;
+      color: var(--muted-dark);
+      font-size: 0.85rem;
+      text-transform: uppercase;
     }
 
     .receipts {
-      font-size: 22px;
-      margin: 8px 0 4px;
       min-height: 32px;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background-color: #161b22;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      font-size: 22px;
     }
 
-    .receipt {
-      display: inline-block;
-      animation: pop 0.35s ease-out;
-    }
+    .receipt { display: inline-block; animation: pop 0.35s ease-out; }
 
     @keyframes pop {
       0% { transform: scale(0.2) translateY(6px); opacity: 0; }
       100% { transform: scale(1) translateY(0); opacity: 1; }
-    }
-
-    .section-label {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #6b7280;
-      margin-top: 24px;
-      margin-bottom: 4px;
     }
 
     .repo-row {
@@ -150,125 +151,67 @@
       font-size: 0.9rem;
     }
 
-    .repo-link {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid #d1d5db;
+    body.dark a {
+      color: var(--cc-green);
       text-decoration: none;
-      color: var(--accent);
+    }
+
+    body.dark a:hover { text-decoration: underline; }
+
+    .repo-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
       font-weight: 500;
     }
 
-    .repo-link:hover {
-      background: var(--accent-soft);
-    }
+    .repo-link:hover { background: #21262d; }
 
     .footer {
       margin-top: 24px;
+      color: var(--muted-dark);
       font-size: 0.85rem;
-      color: #6b7280;
       text-align: right;
     }
 
-    body.dark {
-      background-color: #0d1117;
-      color: #e6edf3;
+    body.dark input,
+    body.dark textarea,
+    body.dark select {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      border: 1px solid var(--border-dark);
     }
 
-    .dark .header-bar {
-      background: #161b22;
-      color: #e6edf3;
-      border-bottom: 1px solid #30363d;
-    }
-
-    .dark .card {
-      background-color: #1f242d;
-      color: #e6edf3;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 1rem;
-    }
-
-    .dark h1,
-    .dark h2,
-    .dark h3 {
-      color: #e6edf3;
-    }
-
-    .dark .header-sub,
-    .dark .section-label,
-    .dark .footer {
-      color: #8b949e;
-    }
-
-    .dark .meta-pill {
-      background: #21262d;
-      color: #e6edf3;
-      border: 1px solid #30363d;
-    }
-
-    .dark a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-
-    .dark a:hover {
-      text-decoration: underline;
-    }
-
-    .dark .repo-link {
-      border-color: #30363d;
-    }
-
-    .dark .repo-link:hover {
-      background-color: #21262d;
-    }
-
-    .dark .receipts {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-    }
-
-    .dark input,
-    .dark textarea,
-    .dark select {
-      background-color: #0d1117;
-      color: #e6edf3;
-      border: 1px solid #30363d;
-    }
-
-    .dark hr {
-      border-color: #30363d;
-    }
+    body.dark hr { border-color: var(--border-dark); }
 
     @media (max-width: 640px) {
-      .card {
-        padding: 18px 16px 22px;
-      }
-      h1 {
-        font-size: 1.35rem;
-      }
+      .header-bar { align-items: flex-start; }
+      .container { padding: 1rem; }
     }
   </style>
 </head>
 <body class="dark">
 
-  <!-- Isotherm-style header -->
+  <div class="gradient-bar"></div>
+
   <div class="header-bar">
     <div>
-      <div class="header-title">CollectorCheck Receipts</div>
+      <h1 class="header-title">CollectorCheck Receipts</h1>
       <div class="header-sub">An Isotherm Applied Sciences project — built in the open.</div>
     </div>
     <div class="header-sub">In active development</div>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <h1>CollectorCheck Receipts is in active development — and we’re building it in the open.</h1>
+  <main class="container">
+    <div class="intro">
+      <p><strong>CollectorCheck helps people scan paper receipts with their phones, while also automatically scanning their email inbox for electronic receipts.</strong></p>
+      <p>CollectorCheck Receipts is in active development — and we’re building it in the open.</p>
+    </div>
 
+    <div class="card">
       <div class="meta-row">
         <div class="meta-pill">
           <span class="icon">📅</span>
@@ -284,10 +227,11 @@
         </div>
       </div>
 
-      <div class="section-label">Daily receipt continuity signal</div>
-      <div id="receiptIcons" class="receipts"></div>
+      <h2>Daily Receipt Continuity Signal</h2>
+      <div id="receiptIcons" class="receipts receipt-row"></div>
 
-      <p>CollectorCheck helps people scan paper receipts with their phones, while also automatically scanning their email inbox for electronic receipts. The CollectorCheck site privately stores paper and digital receipts in the same place. It also lets people sort, manage, categorize, and calculate their expenses without complexity.</p>
+      <h2>About CollectorCheck</h2>
+      <p>CollectorCheck stores paper and digital receipts privately in one place. It lets people sort, manage, categorize, and calculate their expenses without complexity.</p>
 
       <p>The CollectorCheck.com site is not a business. CollectorCheck is not monetized. There are no subscriptions, no upsells, and no paid tiers.</p>
 
@@ -327,7 +271,7 @@
         Isotherm Applied Sciences · CollectorCheck Receipts · Built in the open
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- JavaScript: date, hit counter, animated receipts, GitHub stats -->
   <script>
