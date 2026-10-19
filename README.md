@@ -1,193 +1,106 @@
-# CollectorCheck — Receipt Ingestion & Provenance Viewer (MVP)
+# CollectorCheck — The Continuity Engine for Receipts
 
-[GitHub repository](https://github.com/Isotherm-Applied-Sciences/collectorcheck) · [Developer setup](docs/setup.md) · [Architecture](docs/architecture.md) · [Folder overview](docs/folder-structure.md) · [API reference](docs/API.md)
+CollectorCheck is an open‑source continuity engine that treats receipts as identity, provenance, and economic truth. It is not a scanner, not a budgeting tool, and not a personal finance app. It is a new category: receipt continuity.
 
-CollectorCheck is a lightweight, deterministic receipt‑ingestion system designed for personal organization, provenance tracking, and continuity workflows.
-It provides:
+Receipts are more than proof of purchase. They are:
+- continuity  
+- identity  
+- provenance  
+- trust  
+- economic reality  
+- personal history  
 
-- Image/PDF upload
-- OCR extraction (stub in MVP)
-- Vendor/date/amount normalization
-- Receipt list, detail, delete, edit
-- Vendor overview
-- Tag overview
-- Stats (monthly + category totals)
-- Timeline view
-- Frontend + backend integration
-- Bounded Ditto assistant with contextual help, static cultural moments, light tone, and user-triggered organization helpers
+CollectorCheck builds the infrastructure for that reality.
 
-CollectorCheck is **not** a tax assistant, insurance assistant, compliance tool, or regulated workflow engine.
+## ⭐ Why this project exists
+People generate thousands of receipts across:
+- food  
+- transportation  
+- rentals  
+- repairs  
+- tools  
+- subscriptions  
+- travel  
+- daily life  
 
-## **Features**
+But receipts are scattered across inboxes, glove compartments, apps, and paper piles. They have no continuity, no structure, no identity layer, and no long‑term meaning.
 
-### ✔ Upload receipts (image/PDF)
+CollectorCheck creates a single continuity vault where receipts become:
+- searchable  
+- normalized  
+- structured  
+- timestamped  
+- identity‑linked  
+- future‑usable  
 
-### ✔ Automatic normalization
+This is the foundation for:
+- continuity identity  
+- gig‑economy compensation models  
+- provenance systems  
+- personal archives  
+- future economic tools  
+- humanitarian identity layers (HydroPass)
 
-### ✔ Full CRUD
+## ⭐ What we are building
+CollectorCheck is in early development. We are building:
+- a Windows‑based receipt onboarding client  
+- a backend continuity engine  
+- receipt normalization pipelines  
+- OCR + metadata extraction  
+- “Sign in with Microsoft / Google” identity  
+- a structured receipt vault  
+- APIs for future mobile apps (Android + iOS)  
+- a category‑defining documentation set  
 
-### ✔ Vendor totals
+This is a new category, not a feature clone.
 
-### ✔ Tag totals
+## ⭐ Why contribute
+CollectorCheck is ideal for contributors who enjoy:
+- backend systems  
+- data normalization  
+- OCR pipelines  
+- identity models  
+- continuity theory  
+- category creation  
+- open‑source infrastructure  
+- building something that has never existed before  
 
-### ✔ Monthly stats
+If you want to help build the receipt identity layer, this is the place.
 
-### ✔ Timeline view
+## ⭐ How to contribute
+We welcome contributors at all levels:
+- backend engineers  
+- Windows developers  
+- OCR specialists  
+- documentation writers  
+- testers  
+- designers  
+- category theorists  
 
-### ✔ Deterministic backend
+Start here:
+- Open an Issue  
+- Comment on an existing Issue  
+- Submit a PR  
+- Add documentation  
+- Help define the category  
 
-### ✔ React frontend
+This project is intentionally early. Early projects attract early builders.
 
-### ✔ Safe Ditto assistant (frozen)
+## ⭐ Roadmap (high‑level)
+- Windows client (receipt onboarding)  
+- OAuth (Microsoft + Google)  
+- Receipt normalization engine  
+- OCR pipeline  
+- Continuity vault  
+- API for mobile apps  
+- Android repo  
+- iOS repo (international: ES + JP)  
+- Gig‑economy fork (later)
 
-## **Tech Stack**
+## ⭐ Status
+Early development.  
+Movement stage.  
+Contributors welcome.
 
-### **Frontend**
-
-- React
-- React Router
-- Context API
-- Fetch API
-
-### **Backend**
-
-- Node.js
-- Express
-- Multer (file upload)
-- SQLite (persistent receipt metadata and tags)
-
-## **Folder Structure**
-
-```text
-collectorcheck/
-	frontend/
-		src/
-			pages/
-			components/
-			context/
-			utils/
-		tests/
-	backend/
-		src/
-			index.js
-			routes/
-			controllers/
-			models/
-			db/
-			services/
-			utils/
-		tests/
-	docs/
-		folder-structure.md
-		architecture.md
-		setup.md
-		API.md
-	LICENSE
-	README.md
-```
-
-## **Backend Endpoints**
-
-### **POST /api/upload**
-Upload a receipt file.
-
-### **GET /api/receipts**
-List all receipts.
-
-### **GET /api/receipts/:id**
-Get receipt detail.
-
-### **PUT /api/receipts/:id**
-Update receipt.
-
-### **DELETE /api/receipts/:id**
-Delete receipt.
-
-### **GET /api/vendors**
-Vendor totals.
-
-### **GET /api/tags**
-Tag totals.
-
-### **GET /api/stats**
-Monthly + category totals.
-
-### **GET /api/timeline**
-Chronological receipts.
-
-## **Setup Instructions**
-
-### **Backend**
-
-```bash
-cd backend
-npm install
-npm start
-```
-
-Backend runs on:
-
-```text
-http://localhost:4000
-```
-
-### **Frontend**
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend runs on:
-
-```text
-http://localhost:3001
-```
-
-## **Ditto Assistant (Frozen Mode)**
-
-Ditto is included in the frontend but frozen at:
-
-- contextual help
-- cultural micro‑moments
-- emotional micro‑tone
-- user-triggered deterministic organization (browser-local)
-- guided tours
-- overlays
-- fixed-keyword commands, including explicit repeat requests
-
-Ditto **does not** perform:
-
-- narrative inference
-- mood inference
-- life‑event inference
-- behavioral inference
-- regulated domain inference
-- usage-history-based action predictions
-
-Manual tags remain available. Ditto does not infer tax relevance, learn tax patterns, or classify receipts for regulated workflows. Receipt-level tag and vendor edits persist through the API; Ditto's organization helpers currently update browser-local/shared state only.
-
-## MVP Limitations
-
-- OCR is a stub. Enter vendor, date, and amount manually.
-- `/api/upload` accepts JPEG, PNG, and PDF files up to 5 MiB. It persists metadata, not original file bytes, so downloads from that upload route are unavailable. Legacy disk-backed upload routes retain files separately.
-- This is a public source release, not a hosted service. The local API has no authentication and needs a security review before public deployment.
-- Dependency auditing is not clean: release verification reported 10 backend advisories (including 1 critical and 7 high) and 9 frontend advisories (including 5 high). Review and remediate these before deployment; see [setup security checks](docs/setup.md#dependency-security).
-- Navigation can overflow on narrow mobile screens; that existing layout issue remains open.
-
-## Verification
-
-From the repository root:
-
-```bash
-npm --prefix backend test
-npm --prefix frontend test
-npm --prefix frontend run build
-```
-
-Backend tests use temporary SQLite databases. Frontend tests enforce the frozen Ditto boundary. Production build output is generated in `frontend/dist/` and is not committed.
-
-## **License**
-
-[MIT](LICENSE)
+## ⭐ License
+MIT.
